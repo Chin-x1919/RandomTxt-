@@ -79,7 +79,7 @@
 
   <script>
     (function () {
-      const secretKey = "vBb6oeWVDk4V0eR4"; // เปลี่ยนรหัสของคุณตรงนี้
+      const secretKey = "YOUR_SECRET_KEY"; // เปลี่ยนรหัสของคุณตรงนี้
       const token =
         new URLSearchParams(window.location.search).get("key") ||
         new URLSearchParams(window.location.search).get("Key");
@@ -128,7 +128,7 @@
         const msg = document.getElementById("msg").value.trim();
         if (!msg) return;
 
-        const webhook = "https://discord.com/api/webhooks/1370093081818431508/u1vzomxdqwGknoG4-C2yIVupFi45rQgS8wY81XNT_Nb32mbW8kg0P8Qwd6RCIANDVJM_"
+        const webhook = "YourWebhook"
         try {
           await fetch(webhook, {
             method: "POST",
