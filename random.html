@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #key {
+      font-size: 24px;
+      margin: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>สุ่ม Key/Password</h1>
+  <div id="key">กดปุ่มเพื่อสุ่ม</div>
+  <button onclick="generateKey()">สุ่มใหม่</button>
+
+  <script>
+    function generateKey() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let key = '';
+      for (let i = 0; i < 5; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        key += chars[randomIndex];
+      }
+      document.getElementById('key').textContent = key;
+    }
+  </script>
+
+</body>
+</html>
