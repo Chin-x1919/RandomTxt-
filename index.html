@@ -42,6 +42,11 @@
       cursor: pointer;
     }
 
+    #submitButton:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
     .note {
       font-size: 12px;
       color: gray;
@@ -54,23 +59,23 @@
       margin-top: 20px;
     }
 
-    .recaptcha-button {
-      background-color: #4caf50;
-      color: white;
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
+    .note-link {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: #f5f5f5;
+      padding: 10px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      color: #2196f3;
       cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
     }
 
-    .recaptcha-button:disabled {
-      background-color: #ccc;
-    }
-
-    #submitButton:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+    .note-link:hover {
+      background: #e3f2fd;
     }
   </style>
 </head>
@@ -79,17 +84,15 @@
 
   <script>
     (function () {
-      const secretKey = "YOUR_SECRET_KEY"; // เปลี่ยนรหัสของคุณตรงนี้
+      const secretKey = "YOUR_SECRET_KEY";
       const token =
         new URLSearchParams(window.location.search).get("key") ||
         new URLSearchParams(window.location.search).get("Key");
 
       if (token !== secretKey) {
-        document.body.innerHTML = ""; // หรือจะ redirect ไปหน้าอื่นก็ได้
+        document.body.innerHTML = ""; // หรือ redirect ก็ได้
         return;
       }
-
-      let recaptchaVerified = false;
 
       document.getElementById("app").innerHTML = `
         <div class="container">
@@ -98,29 +101,28 @@
             <textarea id="msg" placeholder="พิมพ์ข้อความที่นี่..." required></textarea>
             <br>
             <div class="recaptcha">
-              <button type="button" id="recaptchaButton" class="recaptcha-button">
-                ยืนยันว่าคุณเป็นมนุษย์
-              </button>
+              <label style="display: flex; align-items: center; font-size: 14px;">
+                <input type="checkbox" id="recaptchaCheck" />
+                <span style="margin-left: 8px;">✅ ยืนยันว่าคุณไม่ใช่บอท</span>
+              </label>
             </div>
             <br>
             <button type="submit" id="submitButton" disabled>ส่งเลย</button>
           </form>
-          <div class="note">เฉพาะคนที่มีลิงก์นี้เท่านั้นที่ส่งข้อความได้</div>
+          <div class="note">เป็นไงหละคนอื่นเขาใช้แอปทำกันแต่ dev ว่างๆ คนนี้ทำระบบเองเลย</div>
         </div>
       `;
 
-      // เมื่อกดปุ่ม recaptcha
-      document.getElementById("recaptchaButton").addEventListener("click", () => {
-        recaptchaVerified = true;
-        document.getElementById("submitButton").disabled = false; // เปิดใช้งานปุ่มส่ง
-        document.getElementById("recaptchaButton").disabled = true; // ปิดปุ่ม recaptcha
-        document.getElementById("recaptchaButton").textContent = "คุณยืนยันแล้ว!";
+      let recaptchaVerified = false;
+
+      document.getElementById("recaptchaCheck").addEventListener("change", function () {
+        recaptchaVerified = this.checked;
+        document.getElementById("submitButton").disabled = !this.checked;
       });
 
       document.getElementById("sendForm").addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!recaptchaVerified) {
-          // หากยังไม่ได้กดยืนยัน ให้ปิดใช้งานปุ่มส่งและแสดงข้อความ
           alert("กรุณายืนยันว่าคุณเป็นมนุษย์ก่อนที่จะส่งข้อความ");
           return;
         }
@@ -128,23 +130,29 @@
         const msg = document.getElementById("msg").value.trim();
         if (!msg) return;
 
-        const webhook = "YourWebhook"
+        const webhook = "ํYOU_WEBHOOK"; //ใส่Discord Webhook
         try {
           await fetch(webhook, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ content: msg }),
           });
-        } catch (err) {
-          // ไม่ต้องแจ้ง error
-        }
+        } catch (err) {}
 
         document.getElementById("sendForm").reset();
-        document.getElementById("submitButton").disabled = true; // ปิดปุ่มส่งหลังจากส่งสำเร็จ
-        document.getElementById("recaptchaButton").disabled = false; // เปิดปุ่ม recaptcha ใหม่
-        document.getElementById("recaptchaButton").textContent = "ยืนยันว่าคุณเป็นมนุษย์";
+        document.getElementById("submitButton").disabled = true;
+        document.getElementById("recaptchaCheck").checked = false;
       });
+
+      // เพิ่มกระดาษโน้ต
+      const noteLink = document.createElement('a');
+      noteLink.href = "https://github.com/Chin-x1919/RandomTxt-";
+      noteLink.className = "note-link";
+      noteLink.target = "_blank";
+      noteLink.textContent = "คุณก็ทำได้นะ!";
+      document.body.appendChild(noteLink);
     })();
   </script>
 </body>
 </html>
+ 
