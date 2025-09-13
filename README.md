@@ -1,4 +1,4 @@
-# Anonymous Messaging with the Dumbest System Ever™
+# Anonymous Q&A but Opensource
 
 ![MIT License](https://img.shields.io/badge/license-MIT-green) 
 ![Open Source Garbage](https://img.shields.io/badge/open--source-garbage-red)
@@ -22,7 +22,7 @@ Because reCAPTCHA is too mainstream.
 
 1. Clone or fork this repo.  
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git clone https://github.com/Chin-x1919/anonymous_q-a.git
    ```
    or just hit the **Fork** button on GitHub.
 
