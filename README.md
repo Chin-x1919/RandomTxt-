@@ -83,6 +83,30 @@ And me? I like my tools like I like my humor:
 **O P E N S O U R C E & S T U P I D**  
 (actually i just hate third party app)
 
+##NGL vs This Potato Project
+
+### NGL (corporate edition)
+- Download the app (big as a dumpster)  
+- Sign up, log in, done in 1 min  
+- Polished UI, scale = millions  
+
+<img width="2188" height="1144" alt="image" src="https://github.com/user-attachments/assets/72a61a45-047f-4f02-b4d3-4ef5c0d375ab" />
+
+
+---
+
+### This project (budget < 20 THB)
+- Fork this repo  
+- Edit the code (yes, manually)  
+- Push to GitHub Pages  
+- Pray it builds  
+- Finally… it works 🎉  
+
+So yeah… **it’s actually harder to use than NGL.**  
+But hey, at least it’s **O P E N S O U R C E** ✨  
+
+<img width="2048" height="1153" alt="image" src="https://github.com/user-attachments/assets/7219d6fb-02b0-48d1-8649-99eebb24d9bc" />
+
 ---
 
 ## Hosting Guide 
