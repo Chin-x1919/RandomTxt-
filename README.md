@@ -28,8 +28,8 @@ Because reCAPTCHA is too mainstream.
 
 2. Edit `index.html` and replace:
    ```html
-   const SECRET_KEY = "YOUR_SECRET_KEY"; (Line121)
-   const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK"; (Line167)
+   const SECRET_KEY = "YOUR_SECRET_KEY"; //(Line191)
+   const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK";// (Line192)
    ```
    with your actual secret key and Discord webhook URL.
    (Line numbers may change if I mess with the code later, so ctrl+F it if needed.)
