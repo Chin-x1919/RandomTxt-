@@ -20,18 +20,27 @@ Because reCAPTCHA is too mainstream.
 
 ## Demo
 
-### What user should see
-![Main screen]<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/59d15798-c0b1-4312-b5aa-1db91e53a3e1" />
+### What users should see
+*(aka the "wow such secure" landing screen)*  
+<img width="2880" height="1620" alt="main screen" src="https://github.com/user-attachments/assets/59d15798-c0b1-4312-b5aa-1db91e53a3e1" />
 
-massage sent! popup
-![Message sent]<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/9bcef80a-4ce8-4bc5-a692-531d5cc7a314" />
+---
 
-without secret-key
-![No access]<img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/00da7b14-4356-4858-b746-2896a22ed3b7" />
+### Message sent! popup
+*(yes, it actually goes to Discord — unbelievable, I know)*  
+<img width="2880" height="1620" alt="popup success" src="https://github.com/user-attachments/assets/9bcef80a-4ce8-4bc5-a692-531d5cc7a314" />
 
-discord massage
-![WebHook]<img width="1592" height="224" alt="image" src="https://github.com/user-attachments/assets/89a84cc8-c648-468d-a0ce-ffe795d2d0b9" />
+---
 
+### Without secret key
+*(what freeloaders will see — literally nothing)*  
+<img width="2880" height="1626" alt="no key" src="https://github.com/user-attachments/assets/00da7b14-4356-4858-b746-2896a22ed3b7" />
+
+---
+
+### Discord message
+*(the moment of truth — your friend's roast/confession lands here)*  
+<img width="1592" height="224" alt="discord message" src="https://github.com/user-attachments/assets/89a84cc8-c648-468d-a0ce-ffe795d2d0b9" />
 
 ---
 
