@@ -10,11 +10,27 @@ Because reCAPTCHA is too mainstream.
 
 ##  Features
 
-- Anonymous messaging (nobody knows who sent it… except you)  
+- Anonymous messaging (nobody knows who sent it… yep noone if you don't believe me go read source code)  
 - "Are you human?" check (spoiler: it’s just a button)  
 - Messages go straight into **Discord** via webhook  
 - Only works if you have the secret link → so high security 🔐
 - 100% **Open Source Garbage™**  
+
+---
+
+## Demo
+what user should see
+<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/59d15798-c0b1-4312-b5aa-1db91e53a3e1" />
+
+massage sent! popup
+<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/9bcef80a-4ce8-4bc5-a692-531d5cc7a314" />
+
+without secret-key
+<img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/00da7b14-4356-4858-b746-2896a22ed3b7" />
+
+discord massage
+<img width="1592" height="224" alt="image" src="https://github.com/user-attachments/assets/89a84cc8-c648-468d-a0ce-ffe795d2d0b9" />
+
 
 ---
 
