@@ -1,39 +1,59 @@
-# ส่งข้อความแบบไม่ระบุตัวตนด้วยระบบควายๆ
+# Anonymous Messaging with the Dumbest System Ever™
 
-เล่นโง่ๆ กับเพื่อน!  
-ส่งข้อความไม่ระบุตัวตน + มีระบบกันบอทแบบบ้าน ๆ แต่ดูจริงจังแต่สุดท้ายก็กากชิบหาย
-(จากใจคนไม่ยอมใช้recapcha)
-
-เปิดเว็บapache xamppหรืออะไรก็ใด้ที่เอาHTMLไปยัดใด้  
-(แค่เปลี่ยน YOUR_SECRET_KEY เป็นรหัสที่เราตั้งไว้)
+Play dumb with your friends!  
+Send anonymous messages with a *totally not secure* anti-bot system (aka "press button to prove human").  
+Because reCAPTCHA is too mainstream.
 
 ---
 
-## ใช้ทำอะไร?
+## Features
 
-- ส่งข้อความให้เพื่อน (แบบไม่รู้ว่าใครส่ง)
-- มีระบบ “ยืนยันว่าเป็นมนุษย์” (แค่กดปุ่ม)
-- ข้อความจะเด้งเข้า Discord (เราจะรู้แต่เพื่อนไม่รู้ใครส่ง!)
-- เฉพาะคนที่มีลิงก์เท่านั้นถึงจะเข้าได้
-
----
-
-## วิธีใช้
-
-1. สร้างลิงก์แบบนี้ (มี key):
-localhost/index.html?Key=Something
-2. ส่งให้เพื่อน แล้วให้เขากดเข้าไป → พิมพ์ข้อความ → กดส่ง
-
-3. ข้อความจะส่งไปเข้า Discord ของเราทันที (ผ่าน webhook)
+- Anonymous messaging (nobody knows who sent it… except you)  
+- "Are you human?" check (spoiler: it’s just a button)  
+- Messages go straight into **Discord** via webhook  
+- Only works if you have the secret link → so high security 🔐  
+- 100% **Open Source Garbage™**  
 
 ---
 
-## เผื่อสงสัยทำทำไมทำไมไม่ใช้ngl
-nglก็ดูดีน่าใช้นะแต่พอดีแบบผมชอบอะไรที่มัน
-O P E N S O U R C E
+## 🚀 How to Use
 
----
+1. just hit the Fork button on GitHub
+2. Edit index.html and replace:
+const SECRET_KEY = "YOUR_SECRET_KEY"; (Line121)
+const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK"; (Line167)
+with your actual secret key and Discord webhook URL.
+3.Run it on literally anything that serves HTML:
+XAMPP
+Apache/NginxGitHub Pages (yes, it even works there lol)
+Or just double-click index.html like a caveman 🪨
+4.Create a link with your key:
+http://localhost/index.html?Key=Something
+5.Send the link to your friends → they type → they send → you get Discord notifications instantly.
+## Why not use NGL?
 
-## License
+Because NGL looks polished.
+And me? I like my tools like I like my humor:
+O P E N S O U R C E & S T U P I D
 
-MIT (ใช้ได้เลย แต่อย่าเอาไปหลอกใครละกัน)
+## Hosting Guide (Fake Serious™)
+
+Localhost: Use XAMPP or Apache → copy index.html → done.
+
+GitHub Pages:
+
+Fork repo
+
+Go to repo → Settings → Pages
+
+Enable Pages → pick main branch → /root
+
+Boom, your dumb system is live on the internet.
+
+VPS/Server: Drop it in /var/www/html/ like a pro sysadmin who gave up.
+
+License
+
+MIT License.
+Do whatever you want with it.
+But seriously, don’t scam people using this potato system.
