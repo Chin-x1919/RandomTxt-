@@ -1,200 +1,307 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ส่งข้อความลับ</title>
+  <title>Anonymous Message Drop</title>
+  <meta name="description" content="Drop an anonymous message that gets forwarded to Discord. Totally not secure. Have fun." />
   <style>
+    :root{
+      --bg1:#2196f3;
+      --bg2:#e3f2fd;
+      --fg:#333;
+      --card:#fff;
+      --muted:#6b7280;
+      --primary:#2196f3;
+      --ok:#22c55e;
+      --shadow:0 8px 24px rgba(0,0,0,.12);
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #2196f3, #e3f2fd);
-      color: #333;
-      text-align: center;
-      padding: 50px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      color: var(--fg);
+      min-height:100dvh;
+      margin:0;
+      display:grid;
+      place-items:center;
+      padding: 40px 16px;
     }
 
     .container {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0 0 12px;
+    }
+
+    p.lead {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      display:block;
+      text-align:left;
+      color:#111827;
     }
 
     textarea {
       width: 100%;
-      height: 120px;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      resize: none;
+      height: 140px;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      resize: vertical;
+      font: inherit;
+    }
+
+    .row {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      justify-content:flex-start;
+      text-align:left;
+    }
+
+    .row input[type="checkbox"]{
+      width:18px;
+      height:18px;
+      accent-color: var(--primary);
+      cursor:pointer;
+    }
+
+    .help {
+      font-size: 12px;
+      color: var(--muted);
     }
 
     button {
-      background-color: #2196f3;
+      background-color: var(--primary);
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
     }
 
-    #submitButton:disabled {
-      background-color: #ccc;
+    button[disabled] {
+      background-color: #c7cdd4;
       cursor: not-allowed;
     }
 
-    .note {
+    .footnote {
       font-size: 12px;
-      color: gray;
-      margin-top: 20px;
+      color: var(--muted);
+      margin-top: 10px;
+      text-align:left;
     }
 
-    .recaptcha {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .note-link {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: #f5f5f5;
-      padding: 10px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      font-size: 14px;
-      color: #2196f3;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .note-link:hover {
-      background: #e3f2fd;
-    }
-
-    /* Modal แบบเต็มหน้าจอ */
+    /* Fullscreen success modal */
     #successModal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-color: rgba(0, 0, 0, 0.85);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       color: white;
-      font-size: 20px;
+      font-size: 18px;
       z-index: 9999;
-      display: none;
       flex-direction: column;
+      padding: 24px;
+      text-align:center;
+    }
+    #successModal .box{
+      background:#0b1220;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 18px 22px;
+      max-width: 520px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    #successModal button {
+      margin-top: 16px;
+      padding: 10px 18px;
+      font-size: 16px;
+      background: var(--ok);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color:#04110a;
+      font-weight:600;
     }
 
-    #successModal button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #4caf50;
-      border: none;
-      border-radius: 8px;
+    .source-link {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      background: #f3f4f6;
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      color: var(--primary);
       cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
     }
+    .source-link:hover { background: #e5e7eb; }
   </style>
 </head>
 <body>
-  <div id="app"></div>
+  <main id="app" class="container" aria-live="polite" aria-busy="true">
+    <!-- Rendered by JS -->
+  </main>
 
-  <!-- Modal แสดงผลหลังส่ง -->
-  <div id="successModal">
-    <div>✅ ส่งข้อความสำเร็จแล้ว!</div>
-    <button onclick="hideModal()">ตกลง</button>
+  <!-- Success Modal -->
+  <div id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="box">
+      <div id="successTitle">✅ Message sent!</div>
+      <div style="opacity:.85;margin-top:4px">It yeeted into Discord. Nice.</div>
+      <button type="button" id="okButton">OK</button>
+    </div>
   </div>
 
-  <script>
-    (function () {
-      const secretKey = "YOUR_SECRET_KEY ";
-      const token =
-        new URLSearchParams(window.location.search).get("key") ||
-        new URLSearchParams(window.location.search).get("Key");
+  <a class="source-link" href="https://github.com/Chin-x1919/anonymous_q-a" target="_blank" rel="noopener noreferrer">Source on GitHub →</a>
 
-      if (token !== secretKey) {
+  <script>
+    // ===== Configuration =====
+    // NOTE: Secrets in client-side code are visible. This is a toy. Don't use for real secrets.
+    const SECRET_KEY = "YOUR_SECRET_KEY";            // change this
+    const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK";  // change this
+
+    // ===== Utilities =====
+    const qs = new URLSearchParams(window.location.search);
+    const getKey = () => qs.get("key") || qs.get("Key") || qs.get("KEY");
+    const el = (sel) => document.querySelector(sel);
+    const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+    // Very light local rate limit to avoid spam refresh (client-side only, easily bypassed)
+    function rateLimited(ms = 4000){
+      const now = Date.now();
+      const last = Number(localStorage.getItem("last_send_ts") || 0);
+      if (now - last < ms) return true;
+      localStorage.setItem("last_send_ts", String(now));
+      return false;
+    }
+
+    function renderApp(){
+      const token = (getKey() || "").trim();
+      if (token !== SECRET_KEY) {
+        // Invalid key → show nothing to casuals (fake security™)
         document.body.innerHTML = "";
         return;
       }
 
-      document.getElementById("app").innerHTML = `
-        <div class="container">
-          <h2>ส่งข้อความไม่ระบุตัวตน</h2>
-          <form id="sendForm">
-            <textarea id="msg" placeholder="พิมพ์ข้อความที่นี่..." required></textarea>
-            <br>
-            <div class="recaptcha">
-              <label style="display: flex; align-items: center; font-size: 14px;">
-                <input type="checkbox" id="recaptchaCheck" />
-                <span style="margin-left: 8px;">✅ ยืนยันว่าคุณไม่ใช่บอท</span>
-              </label>
-            </div>
-            <br>
-            <button type="submit" id="submitButton" disabled>ส่งเลย</button>
-          </form>
-          <div class="note">เป็นไงหละคนอื่นเขาใช้แอปทำกันแต่ dev ว่างๆ คนนี้ทำระบบเองเลย</div>
-        </div>
+      const app = el("#app");
+      app.setAttribute("aria-busy", "false");
+      app.innerHTML = `
+        <h1>Anonymous Message Drop</h1>
+        <p class="lead">Send a message to my Discord. Super serious anti-bot check included. (It's a checkbox.)</p>
+
+        <form id="sendForm" novalidate>
+          <label for="msg">Your message</label>
+          <textarea id="msg" name="msg" placeholder="Type your confession, roast, or secret here..." maxlength="800" required aria-required="true"></textarea>
+          <div class="help">Max ~800 chars. Keep it civil, internet person.</div>
+
+          <div class="row">
+            <input type="checkbox" id="humanCheck" />
+            <label for="humanCheck" class="help" style="margin:0">I am not a bot (I can check a box).</label>
+          </div>
+
+          <button id="submitButton" type="submit" disabled>Send it</button>
+        </form>
+
+        <p class="footnote">Only people with the link can access this page. That's our very advanced security layer™.</p>
       `;
 
-      let recaptchaVerified = false;
+      const form = el("#sendForm");
+      const msgEl = el("#msg");
+      const humanEl = el("#humanCheck");
+      const button = el("#submitButton");
 
-      document.getElementById("recaptchaCheck").addEventListener("change", function () {
-        recaptchaVerified = this.checked;
-        document.getElementById("submitButton").disabled = !this.checked;
+      humanEl.addEventListener("change", () => {
+        button.disabled = !humanEl.checked;
       });
 
-      document.getElementById("sendForm").addEventListener("submit", async (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (!recaptchaVerified) {
-          alert("กรุณายืนยันว่าคุณเป็นมนุษย์ก่อนที่จะส่งข้อความ");
+
+        if (!humanEl.checked) {
+          alert("Please confirm you are human first.");
           return;
         }
 
-        const msg = document.getElementById("msg").value.trim();
+        let msg = (msgEl.value || "").trim();
         if (!msg) return;
 
-        const webhook = "YOU_WEBHOOK";
+        // extra tiny sanitation/normalization
+        msg = msg.replace(/\s+/g, " ");
+        msg = msg.slice(0, 800); // hard cap
+        if (rateLimited(3500)) {
+          alert("Slow down, turbo. Try again in a few seconds.");
+          return;
+        }
+
         try {
-          await fetch(webhook, {
+          const res = await fetch(DISCORD_WEBHOOK, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ content: msg }),
+            body: JSON.stringify({ content: msg })
           });
-        } catch (err) {}
 
-        document.getElementById("sendForm").reset();
-        document.getElementById("submitButton").disabled = true;
-        document.getElementById("recaptchaCheck").checked = false;
+          if (!res.ok) {
+            console.warn("Discord responded with non-OK status:", res.status);
+          }
+        } catch (err) {
+          console.error("Failed to call webhook:", err);
+        }
 
+        form.reset();
+        button.disabled = true;
         showModal();
       });
+    }
 
-      const noteLink = document.createElement('a');
-      noteLink.href = "https://github.com/Chin-x1919/RandomTxt-";
-      noteLink.className = "note-link";
-      noteLink.target = "_blank";
-      noteLink.textContent = "SourceCodeHere!";
-      document.body.appendChild(noteLink);
-    })();
-
+    // ===== Modal Controls =====
     function showModal() {
-      document.getElementById("successModal").style.display = "flex";
+      const modal = el("#successModal");
+      modal.style.display = "flex";
+      el("#okButton").focus();
     }
-
     function hideModal() {
-      document.getElementById("successModal").style.display = "none";
+      el("#successModal").style.display = "none";
     }
+    document.addEventListener("click", (e) => {
+      if (e.target && e.target.id === "okButton") hideModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") hideModal();
+    });
+
+    // ===== Boot =====
+    renderApp();
   </script>
 </body>
 </html>
