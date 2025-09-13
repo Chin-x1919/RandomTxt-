@@ -11,22 +11,24 @@ Because reCAPTCHA is too mainstream.
 - Anonymous messaging (nobody knows who sent it… except you)  
 - "Are you human?" check (spoiler: it’s just a button)  
 - Messages go straight into **Discord** via webhook  
-- Only works if you have the secret link → so high security 🔐  
+- Only works if you have the secret link → so high security 🔐
 - 100% **Open Source Garbage™**  
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 1. just hit the Fork button on GitHub
 2. Edit index.html and replace:
 const SECRET_KEY = "YOUR_SECRET_KEY"; (Line121)
 const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK"; (Line167)
 with your actual secret key and Discord webhook URL.
+
 3.Run it on literally anything that serves HTML:
 XAMPP
 Apache/NginxGitHub Pages (yes, it even works there lol)
-Or just double-click index.html like a caveman 🪨
+Or just double-click index.html like a caveman 
+
 4.Create a link with your key:
 http://localhost/index.html?Key=Something
 5.Send the link to your friends → they type → they send → you get Discord notifications instantly.
