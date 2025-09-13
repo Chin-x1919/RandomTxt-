@@ -1,6 +1,8 @@
 # Anonymous Messaging with the Dumbest System Ever™
 
-Play dumb with your friends!  
+![MIT License](https://img.shields.io/badge/license-MIT-green) 
+![Open Source Garbage](https://img.shields.io/badge/open--source-garbage-red)
+ 
 Send anonymous messages with a *totally not secure* anti-bot system (aka "press button to prove human").  
 Because reCAPTCHA is too mainstream.
 
@@ -11,7 +13,7 @@ Because reCAPTCHA is too mainstream.
 - Anonymous messaging (nobody knows who sent it… except you)  
 - "Are you human?" check (spoiler: it’s just a button)  
 - Messages go straight into **Discord** via webhook  
-- Only works if you have the secret link → so high security 🔐  
+- Only works if you have the secret link → so high security 🔐
 - 100% **Open Source Garbage™**  
 
 ---
@@ -26,23 +28,25 @@ Because reCAPTCHA is too mainstream.
 
 2. Edit `index.html` and replace:
    ```html
-   const SECRET_KEY = "YOUR_SECRET_KEY";
-   const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK";
+   const SECRET_KEY = "YOUR_SECRET_KEY"; (Line121)
+   const DISCORD_WEBHOOK = "YOUR_DISCORD_WEBHOOK"; (Line167)
    ```
    with your actual secret key and Discord webhook URL.
+   (Line numbers may change if I mess with the code later, so ctrl+F it if needed.)
 
-3. Run it on literally anything that serves HTML:  
+
+4. Run it on literally anything that serves HTML:  
    - XAMPP  
    - Apache/Nginx  
    - GitHub Pages (yes, it even works there lol)  
    - Or just double-click `index.html` like a caveman 🪨
 
-4. Create a link with your key:  
+5. Create a link with your key:  
    ```
    http://localhost/index.html?Key=Something
    ```
 
-5. Send the link to your friends → they type → they send → you get Discord notifications instantly.  
+6. Send the link to your friends → they type → they send → you get Discord notifications instantly.  
 
 ---
 
