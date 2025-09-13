@@ -19,17 +19,18 @@ Because reCAPTCHA is too mainstream.
 ---
 
 ## Demo
-what user should see
-<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/59d15798-c0b1-4312-b5aa-1db91e53a3e1" />
+
+### What user should see
+![Main screen]<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/59d15798-c0b1-4312-b5aa-1db91e53a3e1" />
 
 massage sent! popup
-<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/9bcef80a-4ce8-4bc5-a692-531d5cc7a314" />
+![Message sent]<img width="2880" height="1620" alt="image" src="https://github.com/user-attachments/assets/9bcef80a-4ce8-4bc5-a692-531d5cc7a314" />
 
 without secret-key
-<img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/00da7b14-4356-4858-b746-2896a22ed3b7" />
+![No access]<img width="2880" height="1626" alt="image" src="https://github.com/user-attachments/assets/00da7b14-4356-4858-b746-2896a22ed3b7" />
 
 discord massage
-<img width="1592" height="224" alt="image" src="https://github.com/user-attachments/assets/89a84cc8-c648-468d-a0ce-ffe795d2d0b9" />
+![WebHook]<img width="1592" height="224" alt="image" src="https://github.com/user-attachments/assets/89a84cc8-c648-468d-a0ce-ffe795d2d0b9" />
 
 
 ---
