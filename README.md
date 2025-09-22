@@ -85,6 +85,16 @@ And me? I like my tools like I like my humor:
 
 ##NGL vs This Potato Project
 
+| Feature      | **anonymous\_q-a**          | **NGL**                     |
+| ------------ | --------------------------- | --------------------------- |
+| Install size | 0 MB (just HTML)            | 200+ MB (app as a dumpster) |
+| Setup time   | 1 min (edit webhook + host) | 1 min (signup + login)      |
+| UI           | Modern + memes              | Flashy gradient but clunky  |
+| Privacy      | You own it                  | Third-party black box       |
+| Budget       | < 20 THB                    | \$\$\$ VC funded            |
+| Scale        | Enough for you & friends    | Millions of users           |
+| Source code  | 100% open-source garbage™   | Closed source               |
+
 ### NGL (corporate edition)
 - Download the app (big as a dumpster)  
 - Sign up, log in, done in 1 min  
