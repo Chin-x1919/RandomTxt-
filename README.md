@@ -83,11 +83,11 @@ And me? I like my tools like I like my humor:
 **O P E N S O U R C E & S T U P I D**  
 (actually i just hate third party app)
 
-##NGL vs This Potato Project
+## NGL vs This Potato Project
 
 | Feature      | **anonymous\_q-a**          | **NGL**                     |
 | ------------ | --------------------------- | --------------------------- |
-| Install size | 0 MB (just HTML)            | 200+ MB (app as a dumpster) |
+| Install size | 0 MB (just HTML)            | 88+ MB (app as a dumpster) |
 | Setup time   | 1 min (edit webhook + host) | 1 min (signup + login)      |
 | UI           | Modern + memes              | Flashy gradient but clunky  |
 | Privacy      | You own it                  | Third-party black box       |
